@@ -14,19 +14,33 @@ function countSheep(num) {
   return countSheep(num - 1);
 }
 
-function powerCalculator(int, exp){
-  // What is the input to the program? The program takes an integer and an exponent as parameters. 
-  // What is the output of the program? A number equal to the integer raised to the power of our exponent parameter. 
-  // What is the input to each recursive call? The input for each recursive call will include the integer and the exponent, which will decrement with each call. 
+function powerCalculator(int, exp) {
+  // What is the input to the program? The program takes an integer and an exponent as parameters.
+  // What is the output of the program? A number equal to the integer raised to the power of our exponent parameter.
+  // What is the input to each recursive call? The input for each recursive call will include the integer and the exponent, which will decrement with each call.
   // What is the output of each recursive call? Each recursive call will return the integer multiplied by another call for our function.
 
-  // integer * recursive call; 
+  // integer * recursive call;
 
   // base case:
-  if(!exp){
+  if (!exp) {
     return 1;
-  } 
+  }
 
   // recursive case
-  return int * powerCalculator(int, exp -1)
+  return int * powerCalculator(int, exp - 1);
 }
+
+function reverseString(str) {
+  // What is the input to the program? The input is a string
+  // What is the output of the program? The reversed string
+  // What is the input to each recursive call? The string sliced by one
+  // What is the output of each recursive call? A concatenated string with a new recursive call
+  // Base case
+  if(!str.length){
+      return '';
+  }
+  // Recursive case
+  return str.slice(-1) + reverseString(str.slice(0, -1))
+}
+
