@@ -37,14 +37,14 @@ function reverseString(str) {
   // What is the input to each recursive call? The string sliced by one
   // What is the output of each recursive call? A concatenated string with a new recursive call
   // Base case
-  if(!str.length){
-      return '';
+  if (!str.length) {
+    return "";
   }
   // Recursive case
-  return str.slice(-1) + reverseString(str.slice(0, -1))
+  return str.slice(-1) + reverseString(str.slice(0, -1));
 }
 
-function triangle(num){
+function triangle(num) {
   // What is the input to the program? A number
   // What is the output of the program? A number representing the sum of the input and all integers between it and 0
   // What is the input to each recursive call? The input of each recursive call will be the program input decremented each time
@@ -52,19 +52,26 @@ function triangle(num){
 
   // base case:
 
-  if(!num){
+  if (!num) {
     return 0;
   }
 
   // Recursive case:
-  return num + triangle(num - 1)
+  return num + triangle(num - 1);
 }
 
-function stringSplitter(){
-// What is the input to the program? A string and a separator like " "
-// What is the output of the program? The string with the separator removed
-// What is the input to each recursive call? The current version + the separator
-// What is the output of each recursive call? A character that is not the separator or an empty string
+function stringSplitter(str, separator) {
+  // What is the input to the program? A string and a separator like " "
+  // What is the output of the program? The string with the separator removed
+  // What is the input to each recursive call? The current version + the separator
+  // What is the output of each recursive call? A character that is not the separator or an empty string
 
-
+  // Base case
+  if (!str.length) {
+    return "";
+  }
+  if (str[0] === separator){
+      return stringSplitter(str.slice(1), separator)
+  }
+      return str[0] + stringSplitter(str.slice(1), separator)
 }
