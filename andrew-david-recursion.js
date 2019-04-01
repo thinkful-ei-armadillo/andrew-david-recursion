@@ -124,4 +124,35 @@ function factorial(num) {
     return num * factorial(num - 1);
   }
 
-console.log(factorial(5))
+function getOut(maze, y = 0, x = 0){
+  // What is the input to the program? An array representing a maze
+  // What is the output of the program? A string containing the solution to the maze
+  // What is the input to each recursive call? Maze, current position represented as y and x variables, 
+  // What is the output of each recursive call? A string containing the direction of travel and another recursive call
+
+  // base case
+  // if our current space is an e, return ''
+  if(maze[y][x] === 'e'){
+    return ''
+  }
+
+  if(maze[y+1][x] === ' ' || maze[y+1][x] === 'e'){
+    return 'd' + getOut(maze,y+1,x)
+  }
+
+  if(maze[y][x+1] === ' ' || maze[y][x+1] === 'e'){
+    return 'r' + getOut(maze, y, x+1)
+  }
+}
+
+
+
+
+let maze = [
+  [' ', ' ', ' ', '*', ' ', ' ', ' '],
+  ['*', '*', ' ', '*', ' ', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', '*', '*', '*', '*', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+];
+
