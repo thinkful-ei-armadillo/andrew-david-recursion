@@ -59,3 +59,12 @@ function triangle(num){
   // Recursive case:
   return num + triangle(num - 1)
 }
+
+function stringSplitter(){
+// What is the input to the program? A string and a separator like " "
+// What is the output of the program? The string with the separator removed
+// What is the input to each recursive call? The current version + the separator
+// What is the output of each recursive call? A character that is not the separator or an empty string
+
+
+}
