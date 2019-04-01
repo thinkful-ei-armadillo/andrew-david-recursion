@@ -70,89 +70,107 @@ function stringSplitter(str, separator) {
   if (!str.length) {
     return "";
   }
-  if (str[0] === separator){
-      return stringSplitter(str.slice(1), separator)
+  if (str[0] === separator) {
+    return stringSplitter(str.slice(1), separator);
   }
-      return str[0] + stringSplitter(str.slice(1), separator)
+  return str[0] + stringSplitter(str.slice(1), separator);
 }
 
-function fibonacciArr(num){
+function fibonacciArr(num) {
   // What is the input to the program? A number
   // What is the output of the program? A sequence of numbers
   // What is the input to each recursive call?  A number
   // What is the output of each recursive call? A string containing a number
-  
+
   // base case
-  if(num === 1){
-    return [0, 1]
-  }
-   else {
-    let fib = fibonacciArr(num - 1)
-    fib.push(fib[fib.length - 1] + fib[fib.length - 2] )
-    return fib
+  if (num === 1) {
+    return [0, 1];
+  } else {
+    let fib = fibonacciArr(num - 1);
+    fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+    return fib;
   }
 }
-function fibonacci(num, count = 0, arr = []){
-    // What is the input to the program? A number
-    // What is the output of the program? A sequence of numbers
-    // What is the input to each recursive call?  A number
-    // What is the output of each recursive call? A string containing a number
-    
-    // base case
-    if(num <= 0){
-      return 0
-    }
-    if (num <= 2){
-      return 1
-    }
-    return fibonacci(num - 1) + fibonacci(num - 2)
+function fibonacci(num, count = 0, arr = []) {
+  // What is the input to the program? A number
+  // What is the output of the program? A sequence of numbers
+  // What is the input to each recursive call?  A number
+  // What is the output of each recursive call? A string containing a number
+
+  // base case
+  if (num <= 0) {
+    return 0;
   }
+  if (num <= 2) {
+    return 1;
+  }
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
 
 function factorial(num) {
-    // What is the input to the program? A number
-    // What is the output of the program? A number representing the factorial of a number
-    // What is the input to each recursive call? The input of each recursive call will be the program input decremented each time
-    // What is the output of each recursive call? The current number times a recursive call
-  
-    // base case:
-  
-    if (!num) {
-      return 1;
-    }
-  
-    // Recursive case:
-    return num * factorial(num - 1);
+  // What is the input to the program? A number
+  // What is the output of the program? A number representing the factorial of a number
+  // What is the input to each recursive call? The input of each recursive call will be the program input decremented each time
+  // What is the output of each recursive call? The current number times a recursive call
+
+  // base case:
+
+  if (!num) {
+    return 1;
   }
 
-function getOut(maze, y = 0, x = 0){
+  // Recursive case:
+  return num * factorial(num - 1);
+}
+
+function getOut(maze, y = 0, x = 0) {
   // What is the input to the program? An array representing a maze
   // What is the output of the program? A string containing the solution to the maze
-  // What is the input to each recursive call? Maze, current position represented as y and x variables, 
+  // What is the input to each recursive call? Maze, current position represented as y and x variables,
   // What is the output of each recursive call? A string containing the direction of travel and another recursive call
 
   // base case
   // if our current space is an e, return ''
-  if(maze[y][x] === 'e'){
-    return ''
+  if (maze[y][x] === "e") {
+    return "";
   }
 
-  if(maze[y+1][x] === ' ' || maze[y+1][x] === 'e'){
-    return 'd' + getOut(maze,y+1,x)
+  if (maze[y + 1][x] === " " || maze[y + 1][x] === "e") {
+    return "d" + getOut(maze, y + 1, x);
   }
 
-  if(maze[y][x+1] === ' ' || maze[y][x+1] === 'e'){
-    return 'r' + getOut(maze, y, x+1)
+  if (maze[y][x + 1] === " " || maze[y][x + 1] === "e") {
+    return "r" + getOut(maze, y, x + 1);
   }
 }
 
-
-
-
 let maze = [
-  [' ', ' ', ' ', '*', ' ', ' ', ' '],
-  ['*', '*', ' ', '*', ' ', '*', ' '],
-  [' ', ' ', ' ', ' ', ' ', ' ', ' '],
-  [' ', '*', '*', '*', '*', '*', ' '],
-  [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+  [" ", " ", " ", "*", " ", " ", " "],
+  ["*", "*", " ", "*", " ", "*", " "],
+  [" ", " ", " ", " ", " ", " ", " "],
+  [" ", "*", "*", "*", "*", "*", " "],
+  [" ", " ", " ", " ", " ", " ", "e"]
 ];
 
+function superGetOut(maze, y = 0, x = 0) {
+  //base case
+  if (maze[y][x] == "e") {
+    return "";
+  }
+  //moving down
+  if (maze[y + 1][x] === " " || maze[y + 1][x] === "e") {
+    return "d" + superGetOut(maze, y + 1, x);
+  }
+  //moving right
+  if (maze[y][x + 1] === " " || maze[y][x + 1] === "e") {
+    return "r" + superGetOut(maze, y, x + 1);
+  }
+  //moving left
+  if (maze[y][x - 1] === " " || maze[y][x - 1] === "e") {
+    return "l" + superGetOut(maze, y, x - 1);
+  }
+  //moving up
+  if (maze[y - 1][x] === " " || maze[y - 1][x] === "e") {
+    return "u" + superGetOut(maze, y - 1, x);
+  }
+}
