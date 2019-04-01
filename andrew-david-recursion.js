@@ -76,20 +76,52 @@ function stringSplitter(str, separator) {
       return str[0] + stringSplitter(str.slice(1), separator)
 }
 
-function fibonacci(num, count = 0, arr = []){
+function fibonacciArr(num){
   // What is the input to the program? A number
   // What is the output of the program? A sequence of numbers
   // What is the input to each recursive call?  A number
   // What is the output of each recursive call? A string containing a number
   
   // base case
-  if(num <= 0){
-    return 0
+  if(num === 1){
+    return [0, 1]
   }
-  if (num <= 2){
-    return 1
+   else {
+    let fib = fibonacciArr(num - 1)
+    fib.push(fib[fib.length - 1] + fib[fib.length - 2] )
+    return fib
   }
-  return fibonacci(num - 1) + fibonacci(num - 2)
 }
+function fibonacci(num, count = 0, arr = []){
+    // What is the input to the program? A number
+    // What is the output of the program? A sequence of numbers
+    // What is the input to each recursive call?  A number
+    // What is the output of each recursive call? A string containing a number
+    
+    // base case
+    if(num <= 0){
+      return 0
+    }
+    if (num <= 2){
+      return 1
+    }
+    return fibonacci(num - 1) + fibonacci(num - 2)
+  }
 
-console.log(fibonacci(10));
+function factorial(num) {
+    // What is the input to the program? A number
+    // What is the output of the program? A number representing the factorial of a number
+    // What is the input to each recursive call? The input of each recursive call will be the program input decremented each time
+    // What is the output of each recursive call? The current number times a recursive call
+  
+    // base case:
+  
+    if (!num) {
+      return 1;
+    }
+  
+    // Recursive case:
+    return num * factorial(num - 1);
+  }
+
+console.log(factorial(5))
