@@ -44,3 +44,18 @@ function reverseString(str) {
   return str.slice(-1) + reverseString(str.slice(0, -1))
 }
 
+function triangle(num){
+  // What is the input to the program? A number
+  // What is the output of the program? A number representing the sum of the input and all integers between it and 0
+  // What is the input to each recursive call? The input of each recursive call will be the program input decremented each time
+  // What is the output of each recursive call? The current number plus a recursive call
+
+  // base case:
+
+  if(!num){
+    return 0;
+  }
+
+  // Recursive case:
+  return num + triangle(num - 1)
+}
