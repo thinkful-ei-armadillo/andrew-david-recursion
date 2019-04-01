@@ -75,3 +75,21 @@ function stringSplitter(str, separator) {
   }
       return str[0] + stringSplitter(str.slice(1), separator)
 }
+
+function fibonacci(num, count = 0, arr = []){
+  // What is the input to the program? A number
+  // What is the output of the program? A sequence of numbers
+  // What is the input to each recursive call?  A number
+  // What is the output of each recursive call? A string containing a number
+  
+  // base case
+  if(num <= 0){
+    return 0
+  }
+  if (num <= 2){
+    return 1
+  }
+  return fibonacci(num - 1) + fibonacci(num - 2)
+}
+
+console.log(fibonacci(10));
